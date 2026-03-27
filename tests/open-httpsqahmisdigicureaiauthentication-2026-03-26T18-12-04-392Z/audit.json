@@ -1,0 +1,141 @@
+{
+  "timestamp": "2026-03-26T18-12-04-392Z",
+  "flowName": "Open https://qahmis.digicure.ai/#/authentication/loginMaximize the browser windowEnter \"relareg\" in the Username fieldEnter \"Welcome@01\" in the Password fieldEnter \"1234\" in the Captcha fieldClick on the \"Sign In\" buttonWait for the \"Select Institutions\" modal popup to appearClick on the \"Department Selection\" dropdownSelect \"General Medicine\" from the dropdown listClick on the \"Save\" button\"",
+  "prompt": "Open https://qahmis.digicure.ai/#/authentication/loginMaximize the browser windowEnter \"relareg\" in the Username fieldEnter \"Welcome@01\" in the Password fieldEnter \"1234\" in the Captcha fieldClick on the \"Sign In\" buttonWait for the \"Select Institutions\" modal popup to appearClick on the \"Department Selection\" dropdownSelect \"General Medicine\" from the dropdown listClick on the \"Save\" button\"",
+  "geminiModel": "gemini-2.5-flash-lite",
+  "runFolder": "tests\\open-httpsqahmisdigicureaiauthentication-2026-03-26T18-12-04-392Z",
+  "scriptFile": "tests\\open-httpsqahmisdigicureaiauthentication-2026-03-26T18-12-04-392Z\\test.spec.ts",
+  "screenshotFile": "tests\\open-httpsqahmisdigicureaiauthentication-2026-03-26T18-12-04-392Z\\report.png",
+  "videoFile": "tests\\open-httpsqahmisdigicureaiauthentication-2026-03-26T18-12-04-392Z\\recording.webm",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "description": "Open the login page",
+      "tool": "playwright_navigate",
+      "params": {
+        "url": "https://qahmis.digicure.ai/#/authentication/login"
+      },
+      "result": "Navigated to https://qahmis.digicure.ai/#/authentication/login"
+    },
+    {
+      "stepNumber": 2,
+      "description": "Maximize the browser window",
+      "tool": "playwright_maximize",
+      "result": "Window maximized to 1536x912"
+    },
+    {
+      "stepNumber": 3,
+      "description": "Enter 'relareg' in the Username field",
+      "tool": "playwright_fill",
+      "params": {
+        "selector": "#username",
+        "value": "relareg"
+      },
+      "result": "Filled \"relareg\" into #username"
+    },
+    {
+      "stepNumber": 4,
+      "description": "Enter 'Welcome@01' in the Password field",
+      "tool": "playwright_fill",
+      "params": {
+        "selector": "#password",
+        "value": "Welcome@01"
+      },
+      "result": "Filled \"Welcome@01\" into #password"
+    },
+    {
+      "stepNumber": 5,
+      "description": "Enter '1234' in the Captcha field",
+      "tool": "playwright_fill",
+      "params": {
+        "selector": "#captchaconfirm",
+        "value": "1234"
+      },
+      "result": "Filled \"1234\" into #captchaconfirm"
+    },
+    {
+      "stepNumber": 6,
+      "description": "Click on the 'Sign In' button",
+      "tool": "playwright_click",
+      "params": {
+        "selector": "button[type='submit'].btn.btn-common"
+      },
+      "result": "Clicked: button[type='submit'].btn.btn-common"
+    },
+    {
+      "stepNumber": 7,
+      "description": "Wait for the 'Select Institutions' modal popup to appear",
+      "tool": "playwright_click",
+      "params": {
+        "selector": "button:has-text('Select Institutions')"
+      },
+      "result": "Clicked: button:has-text('Select Institutions')"
+    },
+    {
+      "stepNumber": 8,
+      "description": "Click on the 'Department Selection' dropdown",
+      "tool": "playwright_click",
+      "params": {
+        "selector": "select[name='departId']"
+      },
+      "result": "Clicked: select[name='departId']"
+    }
+  ],
+  "stepPlanningRawResponse": "```json\n[\n  {\n    \"action\": \"goto\",\n    \"url\": \"https://qahmis.digicure.ai/#/authentication/login\",\n    \"description\": \"Open the login page\"\n  },\n  {\n    \"action\": \"maximize\",\n    \"description\": \"Maximize the browser window\"\n  },\n  {\n    \"action\": \"fill\",\n    \"target\": \"Username\",\n    \"value\": \"relareg\",\n    \"description\": \"Enter 'relareg' in the Username field\"\n  },\n  {\n    \"action\": \"fill\",\n    \"target\": \"Password\",\n    \"value\": \"Welcome@01\",\n    \"description\": \"Enter 'Welcome@01' in the Password field\"\n  },\n  {\n    \"action\": \"fill\",\n    \"target\": \"Captcha\",\n    \"value\": \"1234\",\n    \"description\": \"Enter '1234' in the Captcha field\"\n  },\n  {\n    \"action\": \"click\",\n    \"target\": \"Sign In\",\n    \"description\": \"Click on the 'Sign In' button\"\n  },\n  {\n    \"action\": \"wait\",\n    \"description\": \"Wait for the 'Select Institutions' modal popup to appear\"\n  },\n  {\n    \"action\": \"click\",\n    \"target\": \"Department Selection\",\n    \"description\": \"Click on the 'Department Selection' dropdown\"\n  },\n  {\n    \"action\": \"select\",\n    \"target\": \"Department Selection\",\n    \"value\": \"General Medicine\",\n    \"description\": \"Select 'General Medicine' from the dropdown list\"\n  },\n  {\n    \"action\": \"click\",\n    \"target\": \"Save\",\n    \"description\": \"Click on the 'Save' button\"\n  }\n]\n```",
+  "plannedSteps": [
+    {
+      "action": "goto",
+      "url": "https://qahmis.digicure.ai/#/authentication/login",
+      "description": "Open the login page"
+    },
+    {
+      "action": "maximize",
+      "description": "Maximize the browser window"
+    },
+    {
+      "action": "fill",
+      "target": "Username",
+      "value": "relareg",
+      "description": "Enter 'relareg' in the Username field"
+    },
+    {
+      "action": "fill",
+      "target": "Password",
+      "value": "Welcome@01",
+      "description": "Enter 'Welcome@01' in the Password field"
+    },
+    {
+      "action": "fill",
+      "target": "Captcha",
+      "value": "1234",
+      "description": "Enter '1234' in the Captcha field"
+    },
+    {
+      "action": "click",
+      "target": "Sign In",
+      "description": "Click on the 'Sign In' button"
+    },
+    {
+      "action": "wait",
+      "description": "Wait for the 'Select Institutions' modal popup to appear"
+    },
+    {
+      "action": "click",
+      "target": "Department Selection",
+      "description": "Click on the 'Department Selection' dropdown"
+    },
+    {
+      "action": "select",
+      "target": "Department Selection",
+      "value": "General Medicine",
+      "description": "Select 'General Medicine' from the dropdown list"
+    },
+    {
+      "action": "click",
+      "target": "Save",
+      "description": "Click on the 'Save' button"
+    }
+  ],
+  "status": "FAILED",
+  "error": "Gemini API error (503): This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later."
+}

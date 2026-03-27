@@ -1,0 +1,49 @@
+```json
+[
+  {
+    "action": "goto",
+    "url": "https://qahmis.digicure.ai/#/authentication/login",
+    "description": "Open the login page"
+  },
+  {
+    "action": "maximize",
+    "description": "Maximize the browser window"
+  },
+  {
+    "action": "fill",
+    "value": "relareg",
+    "description": "Enter 'relareg' in the Username field"
+  },
+  {
+    "action": "fill",
+    "value": "Welcome@01",
+    "description": "Enter 'Welcome@01' in the Password field"
+  },
+  {
+    "action": "fill",
+    "value": "1234",
+    "description": "Enter '1234' in the Captcha field"
+  },
+  {
+    "action": "click",
+    "description": "Click on the 'Sign In' button"
+  },
+  {
+    "action": "wait",
+    "description": "Wait for the 'Select Institutions' modal popup to appear"
+  },
+  {
+    "action": "click",
+    "description": "Click on the 'Department Selection' dropdown"
+  },
+  {
+    "action": "select",
+    "value": "General Medicine",
+    "description": "Select 'General Medicine' from the dropdown list"
+  },
+  {
+    "action": "click",
+    "description": "Click on the 'Save' button"
+  }
+]
+```

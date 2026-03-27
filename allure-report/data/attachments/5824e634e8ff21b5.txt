@@ -1,0 +1,7 @@
+Tool: playwright_click
+Params: {
+  "selector": "select[name='departId']"
+}
+
+AI Raw:
+{ "tool": "playwright_click", "params": { "selector": "select[name='departId']" } }

@@ -1,0 +1,43 @@
+{
+  "timestamp": "2026-03-26T18-10-24-877Z",
+  "flowName": "Go to https://playwright.dev and click GET STARTED",
+  "prompt": "Go to https://playwright.dev and click GET STARTED",
+  "geminiModel": "gemini-2.5-flash-lite",
+  "runFolder": "tests\\go-to-httpsplaywrightdev-and-click-get-s-2026-03-26T18-10-24-877Z",
+  "scriptFile": "tests\\go-to-httpsplaywrightdev-and-click-get-s-2026-03-26T18-10-24-877Z\\test.spec.ts",
+  "screenshotFile": "tests\\go-to-httpsplaywrightdev-and-click-get-s-2026-03-26T18-10-24-877Z\\report.png",
+  "videoFile": "tests\\go-to-httpsplaywrightdev-and-click-get-s-2026-03-26T18-10-24-877Z\\recording.webm",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "description": "Navigate to the Playwright website",
+      "tool": "playwright_navigate",
+      "params": {
+        "url": "https://playwright.dev"
+      },
+      "result": "Navigated to https://playwright.dev"
+    },
+    {
+      "stepNumber": 2,
+      "description": "Click the GET STARTED button",
+      "tool": "playwright_click",
+      "params": {
+        "selector": "a.getStarted_Sjon"
+      },
+      "result": "Clicked: a.getStarted_Sjon"
+    }
+  ],
+  "stepPlanningRawResponse": "```json\n[\n  {\n    \"action\": \"goto\",\n    \"url\": \"https://playwright.dev\",\n    \"description\": \"Navigate to the Playwright website\"\n  },\n  {\n    \"action\": \"click\",\n    \"description\": \"Click the GET STARTED button\"\n  }\n]\n```",
+  "plannedSteps": [
+    {
+      "action": "goto",
+      "url": "https://playwright.dev",
+      "description": "Navigate to the Playwright website"
+    },
+    {
+      "action": "click",
+      "description": "Click the GET STARTED button"
+    }
+  ],
+  "status": "SUCCESS"
+}

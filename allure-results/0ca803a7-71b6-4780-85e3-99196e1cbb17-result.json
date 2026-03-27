@@ -1,0 +1,256 @@
+{
+  "uuid": "0ca803a7-71b6-4780-85e3-99196e1cbb17",
+  "name": "\"Open https://qahmis.digicure.ai/#/authentication/loginMaximize the browser wind",
+  "fullName": "AI QA Agent.\"Open https://qahmis.digicure.ai/#/authentication/loginMaximize the browser wind",
+  "status": "passed",
+  "start": 1774546412817,
+  "steps": [
+    {
+      "name": "🌐 Launch browser",
+      "status": "passed",
+      "start": 1774546412834,
+      "stop": 1774546413499,
+      "attachments": []
+    },
+    {
+      "name": "🧠 AI planning steps from prompt",
+      "status": "passed",
+      "start": 1774546413500,
+      "stop": 1774546422607,
+      "attachments": [
+        {
+          "name": "AI Plan Raw Response",
+          "source": "1859e6d5-7054-47b2-8a8b-ece136d76727.txt",
+          "type": "text/plain"
+        },
+        {
+          "name": "Parsed Steps JSON",
+          "source": "a255da6b-e78a-4ac9-b1d8-47fb682f7a12.txt",
+          "type": "text/plain"
+        }
+      ]
+    },
+    {
+      "name": "Step 1/10: Open the login page",
+      "status": "passed",
+      "start": 1774546422608,
+      "stop": 1774546434972,
+      "attachments": [
+        {
+          "name": "AI Tool Decision",
+          "source": "98ac03b1-19c5-44ea-adb0-52977047491a.txt",
+          "type": "text/plain"
+        },
+        {
+          "name": "Step 1/10: Open the login page",
+          "source": "47f87276-26dd-42cd-8593-d50a48f16b80.png",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Step 2/10: Maximize the browser window",
+      "status": "passed",
+      "start": 1774546434973,
+      "stop": 1774546443894,
+      "attachments": [
+        {
+          "name": "AI Tool Decision",
+          "source": "aa35e1ee-5110-4d2f-8210-4ae5f13a9a39.txt",
+          "type": "text/plain"
+        },
+        {
+          "name": "Step 2/10: Maximize the browser window",
+          "source": "dcee3232-d311-4e94-aa42-3bd3cd667d47.png",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Step 3/10: Enter 'relareg' in the Username field",
+      "status": "passed",
+      "start": 1774546443895,
+      "stop": 1774546452280,
+      "attachments": [
+        {
+          "name": "AI Tool Decision",
+          "source": "85e0d24b-194d-407d-ad0e-4038d6af2f7c.txt",
+          "type": "text/plain"
+        },
+        {
+          "name": "Step 3/10: Enter 'relareg' in the Username field",
+          "source": "b62738dd-1e07-4fde-9ed5-eb512399df78.png",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Step 4/10: Enter 'Welcome@01' in the Password field",
+      "status": "passed",
+      "start": 1774546452281,
+      "stop": 1774546461030,
+      "attachments": [
+        {
+          "name": "AI Tool Decision",
+          "source": "6ff5435c-b5b3-4f7c-8298-1791cadb1fba.txt",
+          "type": "text/plain"
+        },
+        {
+          "name": "Step 4/10: Enter 'Welcome@01' in the Password field",
+          "source": "c73ab9fb-0f9c-4bea-89f7-6ea8e90b4d44.png",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Step 5/10: Enter '1234' in the Captcha field",
+      "status": "passed",
+      "start": 1774546461032,
+      "stop": 1774546469974,
+      "attachments": [
+        {
+          "name": "AI Tool Decision",
+          "source": "c2004c88-eabb-49e4-b2bf-9642e3f70cf2.txt",
+          "type": "text/plain"
+        },
+        {
+          "name": "Step 5/10: Enter '1234' in the Captcha field",
+          "source": "aaec443c-8bd3-4575-baf4-6b43ba47f705.png",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Step 6/10: Click on the 'Sign In' button",
+      "status": "passed",
+      "start": 1774546469974,
+      "stop": 1774546478708,
+      "attachments": [
+        {
+          "name": "AI Tool Decision",
+          "source": "3002ac19-8f33-4450-8818-994a2112664d.txt",
+          "type": "text/plain"
+        },
+        {
+          "name": "Step 6/10: Click on the 'Sign In' button",
+          "source": "61560651-9304-466c-bb5e-ecb55df9be2a.png",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Step 7/10: Wait for the 'Select Institutions' modal popup to appear",
+      "status": "passed",
+      "start": 1774546478709,
+      "stop": 1774546532872,
+      "attachments": [
+        {
+          "name": "AI Tool Decision",
+          "source": "74704afb-7a94-49c2-83c7-12aa2f17c802.txt",
+          "type": "text/plain"
+        },
+        {
+          "name": "Step 7/10: Wait for the 'Select Institutions' modal popup to appear",
+          "source": "a5167426-4c46-4de5-ba63-ae0552d225f3.png",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Step 8/10: Click on the 'Department Selection' dropdown",
+      "status": "passed",
+      "start": 1774546532874,
+      "stop": 1774546541935,
+      "attachments": [
+        {
+          "name": "AI Tool Decision",
+          "source": "7239d81b-6986-4b20-aaa3-78573d1fdf03.txt",
+          "type": "text/plain"
+        },
+        {
+          "name": "Step 8/10: Click on the 'Department Selection' dropdown",
+          "source": "a87b91fc-0c72-43ea-abb9-d3126d232217.png",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Step 9/10: Select 'General Medicine' from the dropdown list",
+      "status": "passed",
+      "start": 1774546541936,
+      "stop": 1774546550686,
+      "attachments": [
+        {
+          "name": "AI Tool Decision",
+          "source": "256dec8b-b9c3-4742-b8db-b2d45965c916.txt",
+          "type": "text/plain"
+        },
+        {
+          "name": "Step 9/10: Select 'General Medicine' from the dropdown list",
+          "source": "b8353921-6eea-4c95-a293-51eaf0a92d70.png",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Step 10/10: Click on the 'Save' button",
+      "status": "passed",
+      "start": 1774546550687,
+      "stop": 1774546559586,
+      "attachments": [
+        {
+          "name": "AI Tool Decision",
+          "source": "7dbb042a-8090-4b35-b8fb-f20afde9a586.txt",
+          "type": "text/plain"
+        },
+        {
+          "name": "Step 10/10: Click on the 'Save' button",
+          "source": "27a49b30-a4fb-4e52-8c75-86f8cc09597a.png",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "📸 Final screenshot",
+      "status": "passed",
+      "start": 1774546559586,
+      "stop": 1774546560062,
+      "attachments": [
+        {
+          "name": "Final State",
+          "source": "ad8df3de-54fa-4bd2-8432-e35538b7b7fa.png",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "📝 Generate Playwright script",
+      "status": "passed",
+      "start": 1774546560063,
+      "stop": 1774546560070,
+      "attachments": [
+        {
+          "name": "Generated Playwright Script",
+          "source": "cf3f4993-fe82-4c21-b6aa-6a9cb384be2d.txt",
+          "type": "text/plain"
+        }
+      ]
+    }
+  ],
+  "attachments": [],
+  "labels": [
+    {
+      "name": "suite",
+      "value": "AI QA Agent"
+    },
+    {
+      "name": "framework",
+      "value": "Playwright"
+    },
+    {
+      "name": "language",
+      "value": "TypeScript"
+    }
+  ],
+  "stop": 1774546567821
+}

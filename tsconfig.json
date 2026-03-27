@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    // Target & module
+    "target": "ES2022",               // ES2022 gives you top-level await natively
+    "module": "ESNext",
+    "moduleResolution": "bundler",    // FIX: was "node" — incompatible with ESNext module
+
+    // Interop
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,        // ADDED: for JSON fixture/config imports
+
+    // Strictness
+    "strict": true,
+    "skipLibCheck": true,             // ADDED: prevents crashes on Playwright/Allure .d.ts conflicts
+    "forceConsistentCasingInFileNames": true,
+
+    // Output
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "declaration": true,              // ADDED: emits .d.ts for MCPBrowserClient
+    "declarationMap": true,           // ADDED: go-to-definition works in test files
+    "sourceMap": true,
+
+    // Libs & types
+    "lib": ["ES2022", "dom"],
+    "types": ["node", "playwright"]   // FIX: was missing "playwright"
+  },
+  "include": ["src/**/*"],
+  "exclude": [
+    "tests/**",                       // ADDED: don't compile tests into dist/
+    "dist/**",
+    "node_modules/**"
+  ]
+}

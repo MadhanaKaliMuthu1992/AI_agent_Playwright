@@ -1,0 +1,7 @@
+Tool: playwright_navigate
+Params: {
+  "url": "https://qahmis.digicure.ai/#/authentication/login"
+}
+
+AI Raw:
+{ "tool": "playwright_navigate", "params": { "url": "https://qahmis.digicure.ai/#/authentication/login" } }

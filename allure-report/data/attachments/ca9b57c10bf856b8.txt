@@ -1,0 +1,7 @@
+Tool: playwright_click
+Params: {
+  "selector": "a.getStarted_Sjon"
+}
+
+AI Raw:
+{ "tool": "playwright_click", "params": { "selector": "a.getStarted_Sjon" } }

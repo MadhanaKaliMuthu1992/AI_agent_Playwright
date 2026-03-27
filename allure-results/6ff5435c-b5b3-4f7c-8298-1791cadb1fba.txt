@@ -1,0 +1,8 @@
+Tool: playwright_fill
+Params: {
+  "selector": "#password",
+  "value": "Welcome@01"
+}
+
+AI Raw:
+{ "tool": "playwright_fill", "params": { "selector": "#password", "value": "Welcome@01" } }

@@ -1,0 +1,5 @@
+Tool: playwright_maximize
+Params: undefined
+
+AI Raw:
+{ "tool": "playwright_maximize" }

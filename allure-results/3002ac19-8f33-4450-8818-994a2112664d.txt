@@ -1,0 +1,7 @@
+Tool: playwright_click
+Params: {
+  "selector": "button[type='submit'].btn.btn-common"
+}
+
+AI Raw:
+{ "tool": "playwright_click", "params": { "selector": "button[type='submit'].btn.btn-common" } }

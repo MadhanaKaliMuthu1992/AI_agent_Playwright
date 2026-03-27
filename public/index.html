@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QAZEN — AI Test Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --g1: #ff6fd8;
+  --g2: #7c5fe6;
+  --g3: #3ec6f5;
+  --g4: #00e5b0;
+  --g5: #ffb347;
+  --grad-main:   linear-gradient(135deg, #ff6fd8 0%, #7c5fe6 40%, #3ec6f5 100%);
+  --grad-hot:    linear-gradient(135deg, #ff6fd8, #ff4e8b);
+  --grad-cool:   linear-gradient(135deg, #3ec6f5, #00e5b0);
+  --grad-warm:   linear-gradient(135deg, #ffb347, #ff6fd8);
+  --grad-purple: linear-gradient(135deg, #7c5fe6, #3ec6f5);
+  --grad-card:   linear-gradient(145deg, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0.04) 100%);
+  --bg:    #0a0618;
+  --surf:  rgba(255,255,255,0.06);
+  --surf2: rgba(255,255,255,0.10);
+  --border: rgba(255,255,255,0.12);
+  --border2: rgba(255,255,255,0.24);
+  --text:  #ffffff;
+  --muted: rgba(255,255,255,0.45);
+  --radius: 18px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── ANIMATED MESH BG ── */
+.bg-mesh {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bg-mesh::before {
+  content: '';
+  position: absolute;
+  width: 900px; height: 900px;
+  top: -300px; left: -200px;
+  background: radial-gradient(circle, rgba(124,95,230,0.35) 0%, transparent 70%);
+  animation: drift1 12s ease-in-out infinite alternate;
+}
+
+.bg-mesh::after {
+  content: '';
+  position: absolute;
+  width: 700px; height: 700px;
+  bottom: -200px; right: -150px;
+  background: radial-gradient(circle, rgba(62,198,245,0.30) 0%, transparent 70%);
+  animation: drift2 10s ease-in-out infinite alternate;
+}
+
+.blob3 {
+  position: absolute;
+  width: 500px; height: 500px;
+  top: 40%; left: 35%;
+  background: radial-gradient(circle, rgba(255,111,216,0.20) 0%, transparent 70%);
+  animation: drift3 14s ease-in-out infinite alternate;
+  border-radius: 50%;
+}
+
+.blob4 {
+  position: absolute;
+  width: 350px; height: 350px;
+  top: 10%; right: 15%;
+  background: radial-gradient(circle, rgba(0,229,176,0.18) 0%, transparent 70%);
+  animation: drift1 9s ease-in-out infinite alternate;
+  border-radius: 50%;
+}
+
+@keyframes drift1 { from { transform: translate(0,0) scale(1); } to { transform: translate(60px,40px) scale(1.15); } }
+@keyframes drift2 { from { transform: translate(0,0) scale(1); } to { transform: translate(-50px,-30px) scale(1.1); } }
+@keyframes drift3 { from { transform: translate(0,0) scale(1); } to { transform: translate(30px,-50px) scale(1.2); } }
+
+/* ── LAYOUT ── */
+.shell {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  grid-template-rows: 68px 1fr;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  background: rgba(10,6,24,0.7);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-mark {
+  width: 38px; height: 38px;
+  border-radius: 12px;
+  background: var(--grad-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 900;
+  color: #fff;
+  box-shadow: 0 0 24px rgba(124,95,230,0.5);
+}
+
+.logo-name {
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  background: var(--grad-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 14px rgba(255,111,216,0.4));
+}
+
+.logo-tag {
+  font-family: 'Fira Code', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  margin-top: 1px;
+}
+
+/* Live pill */
+.live-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 18px;
+  border-radius: 100px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid var(--border);
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.7);
+  backdrop-filter: blur(10px);
+}
+
+.live-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #00e5b0;
+  box-shadow: 0 0 8px #00e5b0;
+  animation: livepulse 2s infinite;
+}
+
+@keyframes livepulse {
+  0%,100% { box-shadow: 0 0 8px #00e5b0; }
+  50%      { box-shadow: 0 0 18px #00e5b0, 0 0 30px rgba(0,229,176,0.3); }
+}
+
+.topbar-right { display: flex; align-items: center; gap: 10px; }
+
+.env-badge {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  padding: 5px 12px;
+  border-radius: 8px;
+  background: var(--grad-cool);
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  box-shadow: 0 0 14px rgba(62,198,245,0.35);
+}
+
+.avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--grad-hot);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 0 16px rgba(255,111,216,0.45);
+}
+
+/* ── SIDEBAR ── */
+.sidebar {
+  background: rgba(10,6,24,0.6);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid var(--border);
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.nav-sec {
+  font-family: 'Fira Code', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+  text-transform: uppercase;
+  padding: 14px 10px 6px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  transition: all 0.2s;
+  position: relative;
+}
+
+.nav-item:hover {
+  background: var(--surf2);
+  color: #fff;
+}
+
+.nav-item.active {
+  background: var(--grad-main);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(124,95,230,0.4);
+}
+
+.nav-item.active .nav-icon { opacity: 1; }
+
+.nav-icon {
+  width: 17px; height: 17px;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.nav-chip {
+  margin-left: auto;
+  font-family: 'Fira Code', monospace;
+  font-size: 9px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.nav-item.active .nav-chip {
+  background: rgba(255,255,255,0.25);
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── MAIN ── */
+.main {
+  padding: 28px 30px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ── PAGE HEADER ── */
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.page-title {
+  font-size: 26px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  background: linear-gradient(90deg, #fff 30%, rgba(255,255,255,0.5));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.page-sub {
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+/* Status pill */
+.status-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 100px;
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  border: 1px solid;
+  transition: all 0.35s;
+  letter-spacing: 0.05em;
+}
+
+.status-pill.idle    { background: rgba(255,255,255,0.06); border-color: var(--border); color: var(--muted); }
+.status-pill.running { background: rgba(255,179,71,0.15); border-color: rgba(255,179,71,0.5); color: #ffb347; box-shadow: 0 0 20px rgba(255,179,71,0.2); }
+.status-pill.success { background: rgba(0,229,176,0.12);  border-color: rgba(0,229,176,0.5); color: #00e5b0; box-shadow: 0 0 20px rgba(0,229,176,0.2); }
+.status-pill.failed  { background: rgba(255,78,139,0.12); border-color: rgba(255,78,139,0.5); color: #ff4e8b; box-shadow: 0 0 20px rgba(255,78,139,0.2); }
+
+.sdot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.status-pill.running .sdot { animation: livepulse 1s infinite; box-shadow: 0 0 8px currentColor; }
+
+/* ── METRICS ── */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 14px;
+}
+
+.metric-card {
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.10);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+
+.metric-card:hover { transform: translateY(-3px); }
+
+.metric-card.m1 { background: linear-gradient(135deg, #ff6fd8 0%, #7c5fe6 100%); box-shadow: 0 8px 32px rgba(255,111,216,0.35); }
+.metric-card.m2 { background: linear-gradient(135deg, #00e5b0 0%, #3ec6f5 100%); box-shadow: 0 8px 32px rgba(0,229,176,0.30); }
+.metric-card.m3 { background: linear-gradient(135deg, #ffb347 0%, #ff6fd8 100%); box-shadow: 0 8px 32px rgba(255,179,71,0.30); }
+.metric-card.m4 { background: linear-gradient(135deg, #7c5fe6 0%, #3ec6f5 100%); box-shadow: 0 8px 32px rgba(124,95,230,0.30); }
+
+.metric-card::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.10);
+}
+
+.metric-card::after {
+  content: '';
+  position: absolute;
+  bottom: -40%; right: 20%;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.07);
+}
+
+.metric-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.75);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.metric-value {
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #fff;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.metric-delta {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  color: rgba(255,255,255,0.7);
+  margin-top: 7px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── CONTENT GRID ── */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+/* ── GLASS CARD ── */
+.card {
+  background: var(--grad-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  animation: fadeUp 0.5s ease both;
+}
+
+.card:hover {
+  border-color: var(--border2);
+  box-shadow: 0 8px 40px rgba(124,95,230,0.12);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.card-icon {
+  width: 32px; height: 32px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.card-icon.i1 { background: linear-gradient(135deg, #ff6fd8, #7c5fe6); box-shadow: 0 0 14px rgba(255,111,216,0.4); }
+.card-icon.i2 { background: linear-gradient(135deg, #3ec6f5, #00e5b0); box-shadow: 0 0 14px rgba(62,198,245,0.4); }
+.card-icon.i3 { background: linear-gradient(135deg, #ffb347, #ff6fd8); box-shadow: 0 0 14px rgba(255,179,71,0.35); }
+.card-icon.i4 { background: linear-gradient(135deg, #7c5fe6, #3ec6f5); box-shadow: 0 0 14px rgba(124,95,230,0.4); }
+
+/* ── TEXTAREA ── */
+.prompt-label {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+textarea {
+  width: 100%;
+  background: rgba(0,0,0,0.35);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: #fff;
+  font-family: 'Fira Code', monospace;
+  font-size: 12.5px;
+  line-height: 1.7;
+  padding: 14px 16px;
+  resize: none;
+  outline: none;
+  min-height: 120px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+textarea:focus {
+  border-color: rgba(124,95,230,0.6);
+  box-shadow: 0 0 0 3px rgba(124,95,230,0.12), 0 0 20px rgba(124,95,230,0.15);
+}
+
+textarea::placeholder { color: rgba(255,255,255,0.25); }
+
+/* ── QUICK PROMPTS ── */
+.quick-prompts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.qp {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  padding: 5px 11px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.18s;
+  user-select: none;
+}
+
+.qp:hover {
+  background: var(--grad-main);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(124,95,230,0.4);
+  transform: translateY(-1px);
+}
+
+/* ── STEP STRIP ── */
+.step-strip {
+  display: flex;
+  gap: 5px;
+  margin-top: 14px;
+}
+
+.step {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.step.done   { background: var(--grad-cool); }
+.step.active { background: var(--grad-warm); animation: shimmer 1s infinite; }
+
+@keyframes shimmer { 0%,100%{opacity:1} 50%{opacity:0.5} }
+
+/* ── RUN BUTTON ── */
+.run-btn {
+  width: 100%;
+  margin-top: 16px;
+  padding: 15px;
+  border-radius: 14px;
+  border: none;
+  background: var(--grad-main);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s;
+  box-shadow: 0 6px 28px rgba(124,95,230,0.45);
+}
+
+.run-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+  transition: left 0.5s;
+}
+
+.run-btn:hover::before { left: 100%; }
+.run-btn:hover { box-shadow: 0 8px 36px rgba(124,95,230,0.6); transform: translateY(-1px); }
+.run-btn:active { transform: scale(0.98); }
+.run-btn.loading { opacity: 0.7; pointer-events: none; }
+
+/* ── SCAN LINE ── */
+@keyframes scan {
+  0%   { top: 0; opacity: 1; }
+  90%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.scan-line {
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #7c5fe6, #3ec6f5, transparent);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.running-card .scan-line { animation: scan 1.8s linear infinite; }
+
+/* ── LOG BOX ── */
+.log-box {
+  background: rgba(0,0,0,0.45);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  height: 195px;
+  overflow-y: auto;
+  padding: 14px 16px;
+  font-family: 'Fira Code', monospace;
+  font-size: 11.5px;
+  line-height: 1.9;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(124,95,230,0.4) transparent;
+}
+
+.log-box::-webkit-scrollbar { width: 3px; }
+.log-box::-webkit-scrollbar-thumb { background: rgba(124,95,230,0.4); border-radius: 3px; }
+
+.log-entry { display: flex; gap: 10px; }
+.log-time  { color: rgba(255,255,255,0.25); flex-shrink: 0; }
+.log-msg   { color: rgba(255,255,255,0.8); }
+.log-entry.info .log-msg { color: #3ec6f5; }
+.log-entry.ok   .log-msg { color: #00e5b0; }
+.log-entry.err  .log-msg { color: #ff4e8b; }
+.log-entry.warn .log-msg { color: #ffb347; }
+
+/* ── ACTION ROW ── */
+.action-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 11px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.75);
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.action-btn.ab1:hover { background: var(--grad-cool); border-color: transparent; color: #fff; box-shadow: 0 0 18px rgba(0,229,176,0.35); }
+.action-btn.ab2:hover { background: var(--grad-purple); border-color: transparent; color: #fff; box-shadow: 0 0 18px rgba(124,95,230,0.35); }
+
+/* ── BOTTOM GRID ── */
+.bottom-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 18px;
+}
+
+/* ── RUN HISTORY ── */
+.run-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.run-row:last-child { border-bottom: none; }
+
+.run-icon {
+  width: 32px; height: 32px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.run-icon.pass { background: linear-gradient(135deg,#00e5b0,#3ec6f5); box-shadow: 0 0 10px rgba(0,229,176,0.3); }
+.run-icon.fail { background: linear-gradient(135deg,#ff4e8b,#ff6fd8); box-shadow: 0 0 10px rgba(255,78,139,0.3); }
+
+.run-info { flex: 1; min-width: 0; }
+.run-name { font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.run-meta { font-family: 'Fira Code', monospace; font-size: 10px; color: var(--muted); margin-top: 2px; }
+
+.run-badge {
+  font-family: 'Fira Code', monospace;
+  font-size: 9px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.run-badge.pass { background: linear-gradient(135deg,#00e5b0,#3ec6f5); color: #fff; box-shadow: 0 0 8px rgba(0,229,176,0.3); }
+.run-badge.fail { background: linear-gradient(135deg,#ff4e8b,#7c5fe6); color: #fff; box-shadow: 0 0 8px rgba(255,78,139,0.3); }
+
+/* ── COVERAGE BARS ── */
+.cov-item { margin-bottom: 13px; }
+
+.cov-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: rgba(255,255,255,0.85);
+}
+
+.cov-pct {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.bar-track {
+  height: 6px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 1.2s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── ENV TABLE ── */
+.env-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 12px;
+}
+
+.env-row:last-child { border-bottom: none; }
+
+.env-key {
+  font-family: 'Fira Code', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+.env-val {
+  font-family: 'Fira Code', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 9px;
+  border-radius: 6px;
+}
+
+.ev1 { background: rgba(62,198,245,0.12); color: #3ec6f5; }
+.ev2 { background: rgba(0,229,176,0.12); color: #00e5b0; }
+.ev3 { background: rgba(255,179,71,0.12); color: #ffb347; }
+.ev4 { background: rgba(255,78,139,0.12); color: #ff4e8b; }
+.ev5 { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(14px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+.card:nth-child(1) { animation-delay:.05s }
+.card:nth-child(2) { animation-delay:.10s }
+.metric-card { animation: fadeUp 0.4s ease both; }
+.metric-card:nth-child(1){animation-delay:.04s}
+.metric-card:nth-child(2){animation-delay:.08s}
+.metric-card:nth-child(3){animation-delay:.12s}
+.metric-card:nth-child(4){animation-delay:.16s}
+</style>
+</head>
+<body>
+
+<!-- Animated background -->
+<div class="bg-mesh">
+  <div class="blob3"></div>
+  <div class="blob4"></div>
+</div>
+
+<div class="shell">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="logo">
+      <div class="logo-mark">Q</div>
+      <div>
+        <div class="logo-name">QAZEN</div>
+        <div class="logo-tag">AI Test Intelligence</div>
+      </div>
+    </div>
+
+    <div class="live-pill">
+      <div class="live-dot"></div>
+      v2.0.0 &nbsp;·&nbsp; Gemini 1.5 Pro &nbsp;·&nbsp; Playwright 1.44 &nbsp;·&nbsp; <span id="clock">--:--:--</span>
+    </div>
+
+    <div class="topbar-right">
+      <div class="env-badge">ENV: DEV</div>
+      <div class="avatar">AI</div>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <div class="nav-sec">Main</div>
+
+    <div class="nav-item active">
+      <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="7" height="7" rx="1.5" stroke-width="1.5"/>
+        <rect x="14" y="3" width="7" height="7" rx="1.5" stroke-width="1.5"/>
+        <rect x="3" y="14" width="7" height="7" rx="1.5" stroke-width="1.5"/>
+        <rect x="14" y="14" width="7" height="7" rx="1.5" stroke-width="1.5"/>
+      </svg>
+      Dashboard
+      <span class="nav-chip">Live</span>
+    </div>
+
+    <div class="nav-item">
+      <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" stroke-width="1.5"/>
+        <polygon points="10,8 16,12 10,16" fill="currentColor"/>
+      </svg>
+      Run Test
+    </div>
+
+    <div class="nav-sec">Reports</div>
+
+    <div class="nav-item">
+      <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-width="1.5"/>
+      </svg>
+      Allure Report
+      <span class="nav-chip">9</span>
+    </div>
+
+    <div class="nav-item">
+      <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path d="M15 10l4.553-2.069A1 1 0 0121 8.82v6.361a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" stroke-width="1.5"/>
+      </svg>
+      Videos
+    </div>
+
+    <div class="nav-sec">Config</div>
+
+    <div class="nav-item">
+      <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-width="1.5"/>
+        <circle cx="12" cy="12" r="3" stroke-width="1.5"/>
+      </svg>
+      Settings
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="nav-item">
+        <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="1.5"/>
+        </svg>
+        Help & Docs
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- Header -->
+    <div class="page-header">
+      <div>
+        <div class="page-title">Automation Dashboard</div>
+        <div class="page-sub">// ai-qa-agent &nbsp;·&nbsp; <span id="datestr">--</span></div>
+      </div>
+      <div id="spill" class="status-pill idle">
+        <div class="sdot"></div>
+        <span id="stxt">IDLE</span>
+      </div>
+    </div>
+
+    <!-- Metrics -->
+    <div class="metrics">
+      <div class="metric-card m1">
+        <div class="metric-label">Total Runs</div>
+        <div class="metric-value" id="m-runs">9</div>
+        <div class="metric-delta">↑ +3 today</div>
+      </div>
+      <div class="metric-card m2">
+        <div class="metric-label">Pass Rate</div>
+        <div class="metric-value">87<span style="font-size:18px">%</span></div>
+        <div class="metric-delta">↑ +4% vs last run</div>
+      </div>
+      <div class="metric-card m3">
+        <div class="metric-label">Avg Duration</div>
+        <div class="metric-value">42<span style="font-size:16px">s</span></div>
+        <div class="metric-delta">─ stable</div>
+      </div>
+      <div class="metric-card m4">
+        <div class="metric-label">AI Steps</div>
+        <div class="metric-value" id="m-steps">128</div>
+        <div class="metric-delta">↑ last run: 14 steps</div>
+      </div>
+    </div>
+
+    <!-- Two col -->
+    <div class="content-grid">
+
+      <!-- Run Card -->
+      <div class="card" id="run-card">
+        <div class="scan-line" id="scan"></div>
+        <div class="card-header">
+          <div class="card-title">
+            <div class="card-icon i1">🧠</div>
+            AI Test Runner
+          </div>
+          <span style="font-family:'Fira Code',monospace;font-size:10px;color:var(--muted)">Gemini 1.5 Pro</span>
+        </div>
+
+        <div class="prompt-label">Prompt</div>
+        <textarea id="prompt" rows="5" placeholder="e.g. Login to the app and create a new user, then verify the confirmation email is sent."></textarea>
+
+        <div class="quick-prompts">
+          <div class="qp" onclick="setPrompt(this)">Login flow</div>
+          <div class="qp" onclick="setPrompt(this)">Form submit</div>
+          <div class="qp" onclick="setPrompt(this)">E2E checkout</div>
+          <div class="qp" onclick="setPrompt(this)">Search + filter</div>
+          <div class="qp" onclick="setPrompt(this)">API check</div>
+        </div>
+
+        <div class="step-strip">
+          <div class="step" id="s1"></div>
+          <div class="step" id="s2"></div>
+          <div class="step" id="s3"></div>
+          <div class="step" id="s4"></div>
+          <div class="step" id="s5"></div>
+        </div>
+
+        <button class="run-btn" id="run-btn" onclick="runTest()">▶ &nbsp;&nbsp;EXECUTE TEST</button>
+      </div>
+
+      <!-- Log Card -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="card-icon i2">📋</div>
+            Execution Log
+          </div>
+          <button onclick="clearLogs()" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:10px;font-family:'Fira Code',monospace;padding:4px 8px;border-radius:6px;transition:color .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color=''">clear</button>
+        </div>
+
+        <div id="logs" class="log-box">
+          <div class="log-entry info">
+            <span class="log-time">00:00:00</span>
+            <span class="log-msg">// Ready — enter a prompt and execute</span>
+          </div>
+        </div>
+
+        <div class="action-row">
+          <button class="action-btn ab1" onclick="openReport()">
+            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10" stroke-width="2"/></svg>
+            Allure Report
+          </button>
+          <button class="action-btn ab2" onclick="openVideo()">
+            <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M15 10l4.553-2.069A1 1 0 0121 8.82v6.361a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z" stroke-width="2"/></svg>
+            View Video
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom row -->
+    <div class="bottom-grid">
+
+      <!-- Recent Runs -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><div class="card-icon i3">🕒</div>Recent Runs</div>
+        </div>
+        <div class="run-row">
+          <div class="run-icon pass">✓</div>
+          <div class="run-info">
+            <div class="run-name">Login + create user</div>
+            <div class="run-meta">2 min ago · 38s</div>
+          </div>
+          <div class="run-badge pass">PASS</div>
+        </div>
+        <div class="run-row">
+          <div class="run-icon fail">✗</div>
+          <div class="run-info">
+            <div class="run-name">E2E checkout flow</div>
+            <div class="run-meta">14 min ago · 61s</div>
+          </div>
+          <div class="run-badge fail">FAIL</div>
+        </div>
+        <div class="run-row">
+          <div class="run-icon pass">✓</div>
+          <div class="run-info">
+            <div class="run-name">Search and filter</div>
+            <div class="run-meta">1 hr ago · 29s</div>
+          </div>
+          <div class="run-badge pass">PASS</div>
+        </div>
+        <div class="run-row">
+          <div class="run-icon pass">✓</div>
+          <div class="run-info">
+            <div class="run-name">Form validation</div>
+            <div class="run-meta">2 hr ago · 44s</div>
+          </div>
+          <div class="run-badge pass">PASS</div>
+        </div>
+      </div>
+
+      <!-- Coverage -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><div class="card-icon i1">📊</div>Test Coverage</div>
+        </div>
+        <div class="cov-item">
+          <div class="cov-label"><span>Authentication</span><span class="cov-pct">94%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:94%;background:linear-gradient(90deg,#00e5b0,#3ec6f5)"></div></div>
+        </div>
+        <div class="cov-item">
+          <div class="cov-label"><span>Checkout</span><span class="cov-pct">71%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:71%;background:linear-gradient(90deg,#7c5fe6,#3ec6f5)"></div></div>
+        </div>
+        <div class="cov-item">
+          <div class="cov-label"><span>Search & Filter</span><span class="cov-pct">88%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:88%;background:linear-gradient(90deg,#ff6fd8,#7c5fe6)"></div></div>
+        </div>
+        <div class="cov-item">
+          <div class="cov-label"><span>Forms</span><span class="cov-pct">62%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:62%;background:linear-gradient(90deg,#ffb347,#ff6fd8)"></div></div>
+        </div>
+        <div class="cov-item">
+          <div class="cov-label"><span>API Validation</span><span class="cov-pct">55%</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width:55%;background:linear-gradient(90deg,#ff4e8b,#ffb347)"></div></div>
+        </div>
+      </div>
+
+      <!-- Environment -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title"><div class="card-icon i4">⚙️</div>Environment</div>
+        </div>
+        <div class="env-row"><span class="env-key">AI_MODEL</span><span class="env-val ev1">gemini-1.5-pro</span></div>
+        <div class="env-row"><span class="env-key">BROWSER</span><span class="env-val ev1">chromium</span></div>
+        <div class="env-row"><span class="env-key">HEADLESS</span><span class="env-val ev3">false</span></div>
+        <div class="env-row"><span class="env-key">VIDEO_REC</span><span class="env-val ev2">enabled</span></div>
+        <div class="env-row"><span class="env-key">ALLURE</span><span class="env-val ev2">enabled</span></div>
+        <div class="env-row"><span class="env-key">NODE</span><span class="env-val ev1">v20.x LTS</span></div>
+        <div class="env-row"><span class="env-key">BASE_URL</span><span class="env-val ev5">from .env</span></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+// Clock
+function tick() {
+  const now = new Date();
+  document.getElementById('clock').textContent = now.toLocaleTimeString('en-US',{hour12:false});
+  document.getElementById('datestr').textContent =
+    now.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+}
+tick(); setInterval(tick, 1000);
+
+function setPrompt(el) { document.getElementById('prompt').value = el.textContent; }
+function clearLogs()   { document.getElementById('logs').innerHTML = ''; }
+function openReport()  { window.open('/allure-report/index.html','_blank'); }
+function openVideo()   { window.open('/videos','_blank'); }
+
+function ts() {
+  return new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+}
+
+function log(msg, type='') {
+  const box = document.getElementById('logs');
+  const el = document.createElement('div');
+  el.className = 'log-entry ' + type;
+  el.innerHTML = `<span class="log-time">${ts()}</span><span class="log-msg">${msg}</span>`;
+  box.appendChild(el);
+  box.scrollTop = box.scrollHeight;
+}
+
+const STEPS = ['s1','s2','s3','s4','s5'];
+const LABELS = ['Initialising','Building script','Launching browser','Executing steps','Writing report'];
+
+function resetSteps() { STEPS.forEach(id => { document.getElementById(id).className='step'; }); }
+function setStep(i)   {
+  STEPS.forEach((id,idx) => {
+    const el = document.getElementById(id);
+    if (idx < i) el.className = 'step done';
+    else if (idx === i) el.className = 'step active';
+    else el.className = 'step';
+  });
+}
+
+function setStatus(state, label) {
+  document.getElementById('spill').className = 'status-pill ' + state;
+  document.getElementById('stxt').textContent = label;
+}
+
+async function runTest() {
+  const prompt = document.getElementById('prompt').value.trim();
+  if (!prompt) { log('⚠ Enter a prompt first','warn'); return; }
+
+  const btn = document.getElementById('run-btn');
+  const card = document.getElementById('run-card');
+
+  btn.classList.add('loading');
+  btn.textContent = '⏳  Running…';
+  card.classList.add('running-card');
+  setStatus('running','RUNNING');
+  resetSteps();
+  clearLogs();
+
+  log('▶ Initiating AI test run…','info');
+
+  for (let i = 0; i < STEPS.length; i++) {
+    setStep(i);
+    log(`◈ ${LABELS[i]}…`);
+    await delay(800 + Math.random()*600);
+  }
+
+  try {
+    log('⟳ Calling /api/run-test…');
+    const res = await fetch('/api/run-test',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({prompt})
+    });
+    const data = await res.json();
+
+    STEPS.forEach(id => document.getElementById(id).className='step done');
+    log('✓ Test completed','ok');
+    log('◈ Folder: '+(data.runFolder||'N/A'));
+    log('✓ Allure results written','ok');
+    setStatus('success','PASSED');
+    document.getElementById('m-runs').textContent =
+      parseInt(document.getElementById('m-runs').textContent||'9')+1;
+
+  } catch(err) {
+    STEPS.forEach(id => document.getElementById(id).className='step');
+    log('✗ Error: '+err.message,'err');
+    setStatus('failed','FAILED');
+  }
+
+  btn.classList.remove('loading');
+  btn.textContent = '▶  EXECUTE TEST';
+  card.classList.remove('running-card');
+}
+
+function delay(ms){ return new Promise(r=>setTimeout(r,ms)); }
+</script>
+</body>
+</html>

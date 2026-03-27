@@ -1,0 +1,7 @@
+Tool: playwright_click
+Params: {
+  "selector": "button:has-text('Save')"
+}
+
+AI Raw:
+{ "tool": "playwright_click", "params": { "selector": "button:has-text('Save')" } }

@@ -1,0 +1,112 @@
+{
+  "uuid": "fdd3925b-904e-4899-9fbf-dd591729e704",
+  "name": "Go to https://playwright.dev and click GET STARTED",
+  "fullName": "AI QA Agent.Go to https://playwright.dev and click GET STARTED",
+  "status": "passed",
+  "start": 1774547703215,
+  "steps": [
+    {
+      "name": "🌐 Launch browser",
+      "status": "passed",
+      "start": 1774547703225,
+      "stop": 1774547704025,
+      "attachments": []
+    },
+    {
+      "name": "🧠 AI planning steps",
+      "status": "passed",
+      "start": 1774547704026,
+      "stop": 1774547710745,
+      "attachments": [
+        {
+          "name": "AI Plan Raw",
+          "source": "72cf2077-c977-4d6a-811d-646f17136ffc.txt",
+          "type": "text/plain"
+        },
+        {
+          "name": "Parsed Steps",
+          "source": "36cf7e45-6959-4175-94d6-db7863aa2fb0.txt",
+          "type": "text/plain"
+        }
+      ]
+    },
+    {
+      "name": "Step 1: Navigate to the Playwright website",
+      "status": "passed",
+      "start": 1774547710745,
+      "stop": 1774547719723,
+      "attachments": [
+        {
+          "name": "AI Decision",
+          "source": "4e3b3173-8328-4377-a654-baa96bd495a3.txt",
+          "type": "text/plain"
+        },
+        {
+          "name": "Step 1: Navigate to the Playwright website",
+          "source": "9eaac81f-aad2-44fa-ac73-bff82d7c5af1.png",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Step 2: Click the GET STARTED button",
+      "status": "passed",
+      "start": 1774547719726,
+      "stop": 1774547727499,
+      "attachments": [
+        {
+          "name": "AI Decision",
+          "source": "b992e6da-04af-4601-b99e-f15afa468ae2.txt",
+          "type": "text/plain"
+        },
+        {
+          "name": "Step 2: Click the GET STARTED button",
+          "source": "daed3a77-a9bd-4246-b0d0-572dafa73b02.png",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "📸 Final screenshot",
+      "status": "passed",
+      "start": 1774547727499,
+      "stop": 1774547729145,
+      "attachments": [
+        {
+          "name": "Final State",
+          "source": "21755077-8094-4da6-a38f-02b0791e015d.png",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "📝 Generate script",
+      "status": "passed",
+      "start": 1774547729145,
+      "stop": 1774547729150,
+      "attachments": [
+        {
+          "name": "Generated Script",
+          "source": "f60f6b44-1aec-4250-b80b-6cad988e8c5a.txt",
+          "type": "text/plain"
+        }
+      ]
+    }
+  ],
+  "attachments": [],
+  "labels": [
+    {
+      "name": "suite",
+      "value": "AI QA Agent"
+    },
+    {
+      "name": "framework",
+      "value": "Playwright"
+    },
+    {
+      "name": "language",
+      "value": "TypeScript"
+    }
+  ],
+  "stop": 1774547736034
+}

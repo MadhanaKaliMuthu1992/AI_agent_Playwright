@@ -1,0 +1,8 @@
+Tool: playwright_fill
+Params: {
+  "selector": "#captchaconfirm",
+  "value": "1234"
+}
+
+AI Raw:
+{ "tool": "playwright_fill", "params": { "selector": "#captchaconfirm", "value": "1234" } }

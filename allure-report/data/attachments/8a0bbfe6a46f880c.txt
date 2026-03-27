@@ -1,0 +1,8 @@
+Tool: playwright_select_option
+Params: {
+  "selector": "select[name='departId']",
+  "value": "General Medicine"
+}
+
+AI Raw:
+{ "tool": "playwright_select_option", "params": { "selector": "select[name='departId']", "value": "General Medicine" } }

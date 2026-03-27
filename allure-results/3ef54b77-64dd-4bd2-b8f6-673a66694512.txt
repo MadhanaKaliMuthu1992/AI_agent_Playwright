@@ -1,0 +1,11 @@
+[
+  {
+    "action": "goto",
+    "url": "https://playwright.dev",
+    "description": "Navigate to the Playwright website"
+  },
+  {
+    "action": "click",
+    "description": "Click the GET STARTED button"
+  }
+]

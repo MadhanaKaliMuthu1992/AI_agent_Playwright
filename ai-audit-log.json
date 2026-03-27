@@ -1,0 +1,184 @@
+{
+  "timestamp": "2026-03-26T10:10:15.450Z",
+  "prompt": "Open https://qahmis.digicure.ai/#/authentication/loginMaximize the browser windowEnter \"relareg\" in the Username fieldEnter \"Welcome@01\" in the Password fieldEnter \"1234\" in the Captcha fieldClick on the \"Sign In\" buttonWait for the \"Select Institutions\" modal popup to appearClick on the \"Department Selection\" dropdownSelect \"General Medicine\" from the dropdown listClick on the \"Save\" button",
+  "geminiModel": "gemini-2.5-flash-lite",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "stepDescription": "Open the login page",
+      "stepAction": "goto",
+      "domSnapshotSentToAI": "",
+      "geminiRawResponse": "{ \"tool\": \"playwright_navigate\", \"params\": { \"url\": \"https://qahmis.digicure.ai/#/authentication/login\" } }",
+      "aiDecidedTool": "playwright_navigate",
+      "aiDecidedParams": {
+        "url": "https://qahmis.digicure.ai/#/authentication/login"
+      },
+      "executionResult": "Navigated to https://qahmis.digicure.ai/#/authentication/login"
+    },
+    {
+      "stepNumber": 2,
+      "stepDescription": "Maximize the browser window",
+      "stepAction": "maximize",
+      "domSnapshotSentToAI": "<a class=\"active\" href=\"https://qahmis.digicure.ai/#skins\">SKINS</a>\n<a href=\"https://qahmis.digicure.ai/#settings\">SETTINGS</a>\n<a id=\"to-recover\" class=\"txt1 text-center text-white\" href=\"javascript:void(0)\">FORGOT PASSWORD?</a>\n<a class=\"txt1 text-center text-white\">Terms of use |</a>\n<a class=\"txt1 text-center text-white\">Privacy Policy</a>\n<a id=\"to-loginform\" class=\"txt2 text-center text-white\">LOGIN</a>\n<a id=\"to-loginform1\" role=\"button\" class=\"txt2 text-white\">Resend OTP</a>\n<a id=\"to-loginform\" class=\"txt2 text-center text-white\" href=\"https://qahmis.digicure.ai/\">LOGIN</a>\n<button t",
+      "geminiRawResponse": "{ \"tool\": \"playwright_maximize\" }",
+      "aiDecidedTool": "playwright_maximize",
+      "executionResult": "Window maximized to 1536x912"
+    },
+    {
+      "stepNumber": 3,
+      "stepDescription": "Enter 'relareg' in the Username field",
+      "stepAction": "fill",
+      "domSnapshotSentToAI": "<a class=\"active\" href=\"https://qahmis.digicure.ai/#skins\">SKINS</a>\n<a href=\"https://qahmis.digicure.ai/#settings\">SETTINGS</a>\n<a id=\"to-recover\" class=\"txt1 text-center text-white\" href=\"javascript:void(0)\">FORGOT PASSWORD?</a>\n<a class=\"txt1 text-center text-white\">Terms of use |</a>\n<a class=\"txt1 text-center text-white\">Privacy Policy</a>\n<a id=\"to-loginform\" class=\"txt2 text-center text-white\">LOGIN</a>\n<a id=\"to-loginform1\" role=\"button\" class=\"txt2 text-white\">Resend OTP</a>\n<a id=\"to-loginform\" class=\"txt2 text-center text-white\" href=\"https://qahmis.digicure.ai/\">LOGIN</a>\n<button t",
+      "geminiRawResponse": "{ \"tool\": \"playwright_fill\", \"params\": { \"selector\": \"#username\", \"value\": \"relareg\" } }",
+      "aiDecidedTool": "playwright_fill",
+      "aiDecidedParams": {
+        "selector": "#username",
+        "value": "relareg"
+      },
+      "executionResult": "Filled \"relareg\" into #username"
+    },
+    {
+      "stepNumber": 4,
+      "stepDescription": "Enter 'Welcome@01' in the Password field",
+      "stepAction": "fill",
+      "domSnapshotSentToAI": "<a class=\"active\" href=\"https://qahmis.digicure.ai/#skins\">SKINS</a>\n<a href=\"https://qahmis.digicure.ai/#settings\">SETTINGS</a>\n<a id=\"to-recover\" class=\"txt1 text-center text-white\" href=\"javascript:void(0)\">FORGOT PASSWORD?</a>\n<a class=\"txt1 text-center text-white\">Terms of use |</a>\n<a class=\"txt1 text-center text-white\">Privacy Policy</a>\n<a id=\"to-loginform\" class=\"txt2 text-center text-white\">LOGIN</a>\n<a id=\"to-loginform1\" role=\"button\" class=\"txt2 text-white\">Resend OTP</a>\n<a id=\"to-loginform\" class=\"txt2 text-center text-white\" href=\"https://qahmis.digicure.ai/\">LOGIN</a>\n<button t",
+      "geminiRawResponse": "{ \"tool\": \"playwright_fill\", \"params\": { \"selector\": \"#password\", \"value\": \"Welcome@01\" } }",
+      "aiDecidedTool": "playwright_fill",
+      "aiDecidedParams": {
+        "selector": "#password",
+        "value": "Welcome@01"
+      },
+      "executionResult": "Filled \"Welcome@01\" into #password"
+    },
+    {
+      "stepNumber": 5,
+      "stepDescription": "Enter '1234' in the Captcha field",
+      "stepAction": "fill",
+      "domSnapshotSentToAI": "<a class=\"active\" href=\"https://qahmis.digicure.ai/#skins\">SKINS</a>\n<a href=\"https://qahmis.digicure.ai/#settings\">SETTINGS</a>\n<a id=\"to-recover\" class=\"txt1 text-center text-white\" href=\"javascript:void(0)\">FORGOT PASSWORD?</a>\n<a class=\"txt1 text-center text-white\">Terms of use |</a>\n<a class=\"txt1 text-center text-white\">Privacy Policy</a>\n<a id=\"to-loginform\" class=\"txt2 text-center text-white\">LOGIN</a>\n<a id=\"to-loginform1\" role=\"button\" class=\"txt2 text-white\">Resend OTP</a>\n<a id=\"to-loginform\" class=\"txt2 text-center text-white\" href=\"https://qahmis.digicure.ai/\">LOGIN</a>\n<button t",
+      "geminiRawResponse": "{ \"tool\": \"playwright_fill\", \"params\": { \"selector\": \"#captchaconfirm\", \"value\": \"1234\" } }",
+      "aiDecidedTool": "playwright_fill",
+      "aiDecidedParams": {
+        "selector": "#captchaconfirm",
+        "value": "1234"
+      },
+      "executionResult": "Filled \"1234\" into #captchaconfirm"
+    },
+    {
+      "stepNumber": 6,
+      "stepDescription": "Click on the 'Sign In' button",
+      "stepAction": "click",
+      "domSnapshotSentToAI": "<a class=\"active\" href=\"https://qahmis.digicure.ai/#skins\">SKINS</a>\n<a href=\"https://qahmis.digicure.ai/#settings\">SETTINGS</a>\n<a id=\"to-recover\" class=\"txt1 text-center text-white\" href=\"javascript:void(0)\">FORGOT PASSWORD?</a>\n<a class=\"txt1 text-center text-white\">Terms of use |</a>\n<a class=\"txt1 text-center text-white\">Privacy Policy</a>\n<a id=\"to-loginform\" class=\"txt2 text-center text-white\">LOGIN</a>\n<a id=\"to-loginform1\" role=\"button\" class=\"txt2 text-white\">Resend OTP</a>\n<a id=\"to-loginform\" class=\"txt2 text-center text-white\" href=\"https://qahmis.digicure.ai/\">LOGIN</a>\n<button t",
+      "geminiRawResponse": "{ \"tool\": \"playwright_click\", \"params\": { \"selector\": \"button[type='submit'].btn.btn-common\" } }",
+      "aiDecidedTool": "playwright_click",
+      "aiDecidedParams": {
+        "selector": "button[type='submit'].btn.btn-common"
+      },
+      "executionResult": "Clicked: button[type='submit'].btn.btn-common"
+    },
+    {
+      "stepNumber": 7,
+      "stepDescription": "Wait for the 'Select Institutions' modal popup to appear",
+      "stepAction": "wait",
+      "domSnapshotSentToAI": "<a class=\"active\" href=\"https://qahmis.digicure.ai/#skins\">SKINS</a>\n<a href=\"https://qahmis.digicure.ai/#settings\">SETTINGS</a>\n<a id=\"to-recover\" class=\"txt1 text-center text-white\" href=\"javascript:void(0)\">FORGOT PASSWORD?</a>\n<a class=\"txt1 text-center text-white\">Terms of use |</a>\n<a class=\"txt1 text-center text-white\">Privacy Policy</a>\n<a id=\"to-loginform\" class=\"txt2 text-center text-white\">LOGIN</a>\n<a id=\"to-loginform1\" role=\"button\" class=\"txt2 text-white\">Resend OTP</a>\n<a id=\"to-loginform\" class=\"txt2 text-center text-white\" href=\"https://qahmis.digicure.ai/\">LOGIN</a>\n<button t",
+      "geminiRawResponse": "{ \"tool\": \"playwright_click\", \"params\": { \"selector\": \"button:has-text('Select Institutions')\" } }",
+      "aiDecidedTool": "playwright_click",
+      "aiDecidedParams": {
+        "selector": "button:has-text('Select Institutions')"
+      },
+      "executionResult": "Clicked: button:has-text('Select Institutions')"
+    },
+    {
+      "stepNumber": 8,
+      "stepDescription": "Click on the 'Department Selection' dropdown",
+      "stepAction": "click",
+      "domSnapshotSentToAI": "<a class=\"active\" href=\"https://qahmis.digicure.ai/#skins\">SKINS</a>\n<a href=\"https://qahmis.digicure.ai/#settings\">SETTINGS</a>\n<a id=\"to-recover\" class=\"txt1 text-center text-white\" href=\"javascript:void(0)\">FORGOT PASSWORD?</a>\n<a class=\"txt1 text-center text-white\">Terms of use |</a>\n<a class=\"txt1 text-center text-white\">Privacy Policy</a>\n<a id=\"to-loginform\" class=\"txt2 text-center text-white\">LOGIN</a>\n<a id=\"to-loginform1\" role=\"button\" class=\"txt2 text-white\">Resend OTP</a>\n<a id=\"to-loginform\" class=\"txt2 text-center text-white\" href=\"https://qahmis.digicure.ai/\">LOGIN</a>\n<button t",
+      "geminiRawResponse": "{ \"tool\": \"playwright_click\", \"params\": { \"selector\": \"select[name='departId']\" } }",
+      "aiDecidedTool": "playwright_click",
+      "aiDecidedParams": {
+        "selector": "select[name='departId']"
+      },
+      "executionResult": "Clicked: select[name='departId']"
+    },
+    {
+      "stepNumber": 9,
+      "stepDescription": "Select 'General Medicine' from the dropdown list",
+      "stepAction": "select",
+      "domSnapshotSentToAI": "<a class=\"active\" href=\"https://qahmis.digicure.ai/#skins\">SKINS</a>\n<a href=\"https://qahmis.digicure.ai/#settings\">SETTINGS</a>\n<a id=\"to-recover\" class=\"txt1 text-center text-white\" href=\"javascript:void(0)\">FORGOT PASSWORD?</a>\n<a class=\"txt1 text-center text-white\">Terms of use |</a>\n<a class=\"txt1 text-center text-white\">Privacy Policy</a>\n<a id=\"to-loginform\" class=\"txt2 text-center text-white\">LOGIN</a>\n<a id=\"to-loginform1\" role=\"button\" class=\"txt2 text-white\">Resend OTP</a>\n<a id=\"to-loginform\" class=\"txt2 text-center text-white\" href=\"https://qahmis.digicure.ai/\">LOGIN</a>\n<button t",
+      "geminiRawResponse": "{ \"tool\": \"playwright_select_option\", \"params\": { \"selector\": \"select[name='departId']\", \"value\": \"General Medicine\" } }",
+      "aiDecidedTool": "playwright_select_option",
+      "aiDecidedParams": {
+        "selector": "select[name='departId']",
+        "value": "General Medicine"
+      },
+      "executionResult": "Selected \"General Medicine\" by label"
+    },
+    {
+      "stepNumber": 10,
+      "stepDescription": "Click on the 'Save' button",
+      "stepAction": "click",
+      "domSnapshotSentToAI": "<a class=\"active\" href=\"https://qahmis.digicure.ai/#skins\">SKINS</a>\n<a href=\"https://qahmis.digicure.ai/#settings\">SETTINGS</a>\n<a id=\"to-recover\" class=\"txt1 text-center text-white\" href=\"javascript:void(0)\">FORGOT PASSWORD?</a>\n<a class=\"txt1 text-center text-white\">Terms of use |</a>\n<a class=\"txt1 text-center text-white\">Privacy Policy</a>\n<a id=\"to-loginform\" class=\"txt2 text-center text-white\">LOGIN</a>\n<a id=\"to-loginform1\" role=\"button\" class=\"txt2 text-white\">Resend OTP</a>\n<a id=\"to-loginform\" class=\"txt2 text-center text-white\" href=\"https://qahmis.digicure.ai/\">LOGIN</a>\n<button t",
+      "geminiRawResponse": "{ \"tool\": \"playwright_click\", \"params\": { \"selector\": \"button:has-text('Save')\" } }",
+      "aiDecidedTool": "playwright_click",
+      "aiDecidedParams": {
+        "selector": "button:has-text('Save')"
+      },
+      "executionResult": "Clicked: button:has-text('Save')"
+    }
+  ],
+  "stepPlanningRawResponse": "```json\n[\n  {\n    \"action\": \"goto\",\n    \"url\": \"https://qahmis.digicure.ai/#/authentication/login\",\n    \"description\": \"Open the login page\"\n  },\n  {\n    \"action\": \"maximize\",\n    \"description\": \"Maximize the browser window\"\n  },\n  {\n    \"action\": \"fill\",\n    \"target\": \"Username\",\n    \"value\": \"relareg\",\n    \"description\": \"Enter 'relareg' in the Username field\"\n  },\n  {\n    \"action\": \"fill\",\n    \"target\": \"Password\",\n    \"value\": \"Welcome@01\",\n    \"description\": \"Enter 'Welcome@01' in the Password field\"\n  },\n  {\n    \"action\": \"fill\",\n    \"target\": \"Captcha\",\n    \"value\": \"1234\",\n    \"description\": \"Enter '1234' in the Captcha field\"\n  },\n  {\n    \"action\": \"click\",\n    \"target\": \"Sign In\",\n    \"description\": \"Click on the 'Sign In' button\"\n  },\n  {\n    \"action\": \"wait\",\n    \"description\": \"Wait for the 'Select Institutions' modal popup to appear\"\n  },\n  {\n    \"action\": \"click\",\n    \"target\": \"Department Selection\",\n    \"description\": \"Click on the 'Department Selection' dropdown\"\n  },\n  {\n    \"action\": \"select\",\n    \"target\": \"Department Selection\",\n    \"value\": \"General Medicine\",\n    \"description\": \"Select 'General Medicine' from the dropdown list\"\n  },\n  {\n    \"action\": \"click\",\n    \"target\": \"Save\",\n    \"description\": \"Click on the 'Save' button\"\n  }\n]\n```",
+  "plannedSteps": [
+    {
+      "action": "goto",
+      "url": "https://qahmis.digicure.ai/#/authentication/login",
+      "description": "Open the login page"
+    },
+    {
+      "action": "maximize",
+      "description": "Maximize the browser window"
+    },
+    {
+      "action": "fill",
+      "target": "Username",
+      "value": "relareg",
+      "description": "Enter 'relareg' in the Username field"
+    },
+    {
+      "action": "fill",
+      "target": "Password",
+      "value": "Welcome@01",
+      "description": "Enter 'Welcome@01' in the Password field"
+    },
+    {
+      "action": "fill",
+      "target": "Captcha",
+      "value": "1234",
+      "description": "Enter '1234' in the Captcha field"
+    },
+    {
+      "action": "click",
+      "target": "Sign In",
+      "description": "Click on the 'Sign In' button"
+    },
+    {
+      "action": "wait",
+      "description": "Wait for the 'Select Institutions' modal popup to appear"
+    },
+    {
+      "action": "click",
+      "target": "Department Selection",
+      "description": "Click on the 'Department Selection' dropdown"
+    },
+    {
+      "action": "select",
+      "target": "Department Selection",
+      "value": "General Medicine",
+      "description": "Select 'General Medicine' from the dropdown list"
+    },
+    {
+      "action": "click",
+      "target": "Save",
+      "description": "Click on the 'Save' button"
+    }
+  ],
+  "status": "SUCCESS"
+}

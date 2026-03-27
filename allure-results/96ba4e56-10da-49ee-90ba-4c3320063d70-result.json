@@ -1,0 +1,28 @@
+{
+  "uuid": "96ba4e56-10da-49ee-90ba-4c3320063d70",
+  "name": "\"Open https://qahmis.digicure.ai/#/authentication/loginMaximize the browser wind",
+  "fullName": "AI QA Agent.\"Open https://qahmis.digicure.ai/#/authentication/loginMaximize the browser wind",
+  "status": "failed",
+  "start": 1774546294882,
+  "steps": [],
+  "attachments": [],
+  "labels": [
+    {
+      "name": "suite",
+      "value": "AI QA Agent"
+    },
+    {
+      "name": "framework",
+      "value": "Playwright"
+    },
+    {
+      "name": "language",
+      "value": "TypeScript"
+    }
+  ],
+  "statusDetails": {
+    "message": "ENOENT: no such file or directory, mkdir 'D:\\NEW AI\\ai-qa-agent\\tests\\open-httpsqahmisdigicureaiauthenticationloginmaximize-the-browser-windowenter-relareg-in-the-username-fieldenter-welcome01-in-the-password-fieldenter-1234-in-the-captcha-fieldclick-on-the-sign-in-buttonwait-for-the-select-institutions-modal-popup-to-appearclick-on-the-department-selection-dropdownselect-general-medicine-from-the-dropdown-listclick-on-the-save-button-2026-03-26T17-31-34-886Z'",
+    "trace": "Error: ENOENT: no such file or directory, mkdir 'D:\\NEW AI\\ai-qa-agent\\tests\\open-httpsqahmisdigicureaiauthenticationloginmaximize-the-browser-windowenter-relareg-in-the-username-fieldenter-welcome01-in-the-password-fieldenter-1234-in-the-captcha-fieldclick-on-the-sign-in-buttonwait-for-the-select-institutions-modal-popup-to-appearclick-on-the-department-selection-dropdownselect-general-medicine-from-the-dropdown-listclick-on-the-save-button-2026-03-26T17-31-34-886Z'\n    at Object.mkdirSync (node:fs:1364:26)\n    at AIAgent.run (file:///D:/NEW%20AI/ai-qa-agent/src/agent/aiAgent.ts:29:12)\n    at main (file:///D:/NEW%20AI/ai-qa-agent/src/index.ts:41:21)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)"
+  },
+  "stop": 1774546294891
+}
